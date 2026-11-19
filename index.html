@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>منصة المعهد الفني الصناعي بقويسنا - الفرقة الثانية شبكات كهربائية</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="main-header">
+    <div class="container header-content">
+      <div class="brand">
+        <div class="logo-badge">⚡</div>
+        <div>
+          <h1>المعهد الفني الصناعي بقويسنا</h1>
+          <p>الفرقة الثانية — شعبة الشبكات الكهربائية</p>
+        </div>
+      </div>
+      <nav class="main-nav" id="mainNav">
+        <button class="nav-btn active" data-section="scheduleSection">الجدول والمحاضرات</button>
+        <button class="nav-btn" data-section="subjectsSection">المواد الدراسية</button>
+        <button class="nav-btn" data-section="studentsSection">قائمة الطلاب</button>
+        <button class="nav-btn" data-section="supportSection">الدعم الفني</button>
+        <button class="nav-btn admin-nav-btn" data-section="adminSection">لوحة الأدمن</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container main-content">
+    <!-- قسم الجدول والمحاضرات -->
+    <section id="scheduleSection" class="page-section active">
+      <div class="section-header">
+        <h2>الجدول الدراسي والإعلانات</h2>
+        <span class="badge">العام الدراسي 2026 / 2027</span>
+      </div>
+
+      <div id="announcementsList" class="announcements-box"></div>
+
+      <div class="card table-card">
+        <h3>جدول المحاضرات الأسبوعي</h3>
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>اليوم</th>
+                <th>الفترة الأولى</th>
+                <th>الفترة الثانية</th>
+                <th>الفترة الثالثة</th>
+              </tr>
+            </thead>
+            <tbody id="scheduleTableBody">
+              <tr>
+                <td>السبت</td>
+                <td>شبكات النقل والتوزيع (مدرج 1)</td>
+                <td>وقاية نظم القوى (معمل الشبكات)</td>
+                <td>تطبيقات الحاسب في الشبكات</td>
+              </tr>
+              <tr>
+                <td>الأحد</td>
+                <td>محطات القوى الكهربائية (مدرج 2)</td>
+                <td>قياسات واختبارات كهربائية</td>
+                <td>تدريب عملي - ورشة الشبكات</td>
+              </tr>
+              <tr>
+                <td>الإثنين</td>
+                <td>آلات كهربائية متقدمة</td>
+                <td>إلكترونيات القوى</td>
+                <td>مشروع التخرج التطبيقي</td>
+              </tr>
+              <tr>
+                <td>الثلاثاء</td>
+                <td>تخطيط وتصميم الشبكات</td>
+                <td>صيانة وتشغيل الخطوط الهوائية</td>
+                <td>معمل الوقاية والتحكم</td>
+              </tr>
+              <tr>
+                <td>الأربعاء</td>
+                <td>اقتصاديات القوى الكهربائية</td>
+                <td>أمن وسلامة مهنية</td>
+                <td>مراجعة وتطبيقات عامة</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- قسم المواد الدراسية -->
+    <section id="subjectsSection" class="page-section">
+      <div class="section-header">
+        <h2>المواد الدراسية والمراجع</h2>
+        <span class="badge">7 مواد أساسية</span>
+      </div>
+      <div class="cards-grid" id="subjectsGrid"></div>
+    </section>
+
+    <!-- قسم قائمة الطلاب -->
+    <section id="studentsSection" class="page-section">
+      <div class="section-header">
+        <h2>قائمة طلاب الفرقة الثانية — شبكات كهربائية</h2>
+        <div class="search-box">
+          <input type="text" id="studentSearchInput" placeholder="ابحث بالاسم أو رقم الجلوس..." />
+        </div>
+      </div>
+
+      <div class="card">
+        <form id="studentRegisterForm" class="inline-form">
+          <input type="text" id="newStudentName" placeholder="اسم الطالب رباعي" required />
+          <input type="text" id="newStudentCode" placeholder="رقم الجلوس / الكود" required />
+          <input type="text" id="newStudentGroup" placeholder="المجموعة / السكشن (مثال: سكشن 1)" required />
+          <button type="submit" class="btn btn-primary">تسجيل بيانات الطالب</button>
+        </form>
+      </div>
+
+      <div class="card table-card">
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>اسم الطالب</th>
+                <th>رقم الجلوس / الكود</th>
+                <th>السكشن</th>
+              </tr>
+            </thead>
+            <tbody id="studentsTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- قسم الدعم الفني -->
+    <section id="supportSection" class="page-section">
+      <div class="section-header">
+        <h2>الدعم الفني واستفسارات الطلاب</h2>
+        <span class="badge">تواصل مباشر مع إدارة المنصة</span>
+      </div>
+
+      <div class="card form-card">
+        <form id="supportForm">
+          <div class="form-group">
+            <label for="supportName">اسم الطالب</label>
+            <input type="text" id="supportName" placeholder="اكتب اسمك الكامل" required />
+          </div>
+          <div class="form-group">
+            <label for="supportPhone">رقم الهاتف أو البريد (اختياري)</label>
+            <input type="text" id="supportPhone" placeholder="للتواصل والرد على استفسارك" />
+          </div>
+          <div class="form-group">
+            <label for="supportMessage">تفاصيل المشكلة أو الاستفسار</label>
+            <textarea id="supportMessage" rows="4" placeholder="اكتب رسالتك هنا..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">إرسال الرسالة</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- قسم لوحة الأدمن -->
+    <section id="adminSection" class="page-section">
+      <div class="section-header">
+        <h2>لوحة تحكم الأدمن</h2>
+        <span class="badge badge-warning">مخصصة لمسؤول المنصة فقط</span>
+      </div>
+
+      <!-- نموذج تسجيل دخول الأدمن -->
+      <div id="adminLoginBox" class="card login-card">
+        <h3>تسجيل دخول مسؤول المنصة</h3>
+        <p class="muted-text">الدخول متاح فقط لحساب الأدمن المعتمد عبر البريد الإلكتروني وكلمة المرور.</p>
+        <form id="adminLoginForm">
+          <div class="form-group">
+            <label for="adminEmailInput">البريد الإلكتروني للأدمن</label>
+            <input type="email" id="adminEmailInput" placeholder="أدخل بريد الأدمن الإلكتروني" autocomplete="username" required />
+          </div>
+          <div class="form-group">
+            <label for="adminPassInput">كلمة المرور</label>
+            <input type="password" id="adminPassInput" placeholder="أدخل كلمة المرور" autocomplete="current-password" required />
+          </div>
+          <button type="submit" class="btn btn-primary full-width">دخول لوحة التحكم</button>
+        </form>
+      </div>
+
+      <!-- محتوى لوحة التحكم بعد التحقق -->
+      <div id="adminPanel" class="admin-dashboard" style="display: none;">
+        <div class="admin-topbar card">
+          <div>
+            <strong>مرحباً بك في لوحة التحكم</strong>
+            <p class="muted-text" id="loggedAdminEmail"></p>
+          </div>
+          <button id="adminLogoutBtn" class="btn btn-danger">تسجيل الخروج</button>
+        </div>
+
+        <div class="card">
+          <h3>نشر إعلان جديد للطلاب</h3>
+          <form id="announcementForm" class="inline-form">
+            <input type="text" id="announcementTitle" placeholder="عنوان الإعلان" required />
+            <input type="text" id="announcementBody" placeholder="نص الإعلان أو التنبيه..." required />
+            <button type="submit" class="btn btn-primary">نشر الإعلان</button>
+          </form>
+        </div>
+
+        <div class="card">
+          <h3>إدارة الطلاب المسجلين</h3>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>الاسم</th>
+                  <th>الكود</th>
+                  <th>السكشن</th>
+                  <th>إجراء</th>
+                </tr>
+              </thead>
+              <tbody id="adminStudentsTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>رسائل الدعم الفني الواردة</h3>
+          <div id="adminSupportList" class="support-messages-list"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- تذييل ثابت في أسفل المنصة في جميع الأقسام -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p class="designer-credit">المصمم: الطالب محمد سامح</p>
+      <p class="institute-sub">المعهد الفني الصناعي بقويسنا — الفرقة الثانية شعبة شبكات كهربائية</p>
+    </div>
+  </footer>
+
+  <!-- مكتبات Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
