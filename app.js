@@ -1460,22 +1460,50 @@ try {
   console.warn("Firebase initialization notice:", err);
 }
 
-// المواد الدراسية الأساسية السبعة
+// المواد الدراسية الأساسية السبعة المعتمدة للفرقة الثانية — شعبة الشبكات الكهربائية
 const subjectsData = [
-  { id: "sub_1", title: "شبكات النقل والتوزيع الكهربائية", desc: "ملفات المنهج PDF والامتحانات الخاصة بالمادة." },
-  { id: "sub_2", title: "وقاية نظم القوى الكهربائية", desc: "ملفات المنهج PDF والامتحانات الخاصة بالمادة." },
-  { id: "sub_3", title: "محطات القوى الكهربائية", desc: "ملفات المنهج PDF والامتحانات الخاصة بالمادة." },
-  { id: "sub_4", title: "الآلات الكهربائية المتقدمة", desc: "ملفات المنهج PDF والامتحانات الخاصة بالمادة." },
-  { id: "sub_5", title: "القياسات والاختبارات الكهربائية", desc: "ملفات المنهج PDF والامتحانات الخاصة بالمادة." },
-  { id: "sub_6", title: "إلكترونيات القوى والتحكم", desc: "ملفات المنهج PDF والامتحانات الخاصة بالمادة." },
-  { id: "sub_7", title: "تطبيقات الحاسب في الشبكات", desc: "ملفات المنهج PDF والامتحانات الخاصة بالمادة." }
+  {
+    "id": "sub_1",
+    "title": "شبكات كهربية",
+    "desc": "ملفات المنهج PDF والامتحانات الخاصة بمادة شبكات كهربية."
+  },
+  {
+    "id": "sub_2",
+    "title": "معالجات ومتحكمات",
+    "desc": "ملفات المنهج PDF والامتحانات الخاصة بمادة معالجات ومتحكمات."
+  },
+  {
+    "id": "sub_3",
+    "title": "تحكم آلي",
+    "desc": "ملفات المنهج PDF والامتحانات الخاصة بمادة تحكم آلي."
+  },
+  {
+    "id": "sub_4",
+    "title": "تك ورش كهربية",
+    "desc": "ملفات المنهج PDF والامتحانات الخاصة بمادة تك ورش كهربية."
+  },
+  {
+    "id": "sub_5",
+    "title": "الكترونيات القوي الكهربية",
+    "desc": "ملفات المنهج PDF والامتحانات الخاصة بمادة الكترونيات القوي الكهربية."
+  },
+  {
+    "id": "sub_6",
+    "title": "انظمة توليد",
+    "desc": "ملفات المنهج PDF والامتحانات الخاصة بمادة انظمة توليد."
+  },
+  {
+    "id": "sub_7",
+    "title": "ضبط جودة",
+    "desc": "ملفات المنهج PDF والامتحانات الخاصة بمادة ضبط جودة."
+  }
 ];
 
 // الحالة المحلية للبيانات
 let stateData = {
   scheduleImage: localStorage.getItem("quesna_schedule_img") || "",
   scheduleFileName: localStorage.getItem("quesna_schedule_name") || "",
-  subjectFiles: JSON.parse(localStorage.getItem("quesna_subject_files") || "{}"),
+  subjectFiles: JSON.parse(localStorage.getItem("quesna_subject_files_v5") || "{}"),
   announcements: JSON.parse(localStorage.getItem("quesna_announcements") || "[]"),
   cvRecords: JSON.parse(localStorage.getItem("quesna_cv_records") || "[]"),
   supportMessages: JSON.parse(localStorage.getItem("quesna_support_msgs") || "[]")
@@ -1663,11 +1691,11 @@ window.handleSubjectFileSelected = function (event, subjectId, category) {
       dataUrl: reader.result,
       addedAt: Date.now()
     });
-    localStorage.setItem("quesna_subject_files", JSON.stringify(stateData.subjectFiles));
+    localStorage.setItem("quesna_subject_files_v5", JSON.stringify(stateData.subjectFiles));
 
     if (isFirebaseReady && db && isAuthorizedAdmin()) {
       try {
-        await db.collection("platform_settings").doc("subjects").set({
+        await db.collection("platform_settings").doc("subjects_v5").set({
           files: stateData.subjectFiles,
           updatedAt: Date.now()
         });
@@ -1685,11 +1713,11 @@ window.removeSubjectFile = async function (subjectId, category, index) {
   if (!isAuthorizedAdmin()) return;
   if (!stateData.subjectFiles[subjectId]) return;
   stateData.subjectFiles[subjectId][category].splice(index, 1);
-  localStorage.setItem("quesna_subject_files", JSON.stringify(stateData.subjectFiles));
+  localStorage.setItem("quesna_subject_files_v5", JSON.stringify(stateData.subjectFiles));
 
   if (isFirebaseReady && db) {
     try {
-      await db.collection("platform_settings").doc("subjects").set({
+      await db.collection("platform_settings").doc("subjects_v5").set({
         files: stateData.subjectFiles,
         updatedAt: Date.now()
       });
@@ -1987,7 +2015,7 @@ async function loadCloudDataIfAdmin() {
       stateData.scheduleFileName = schedDoc.data().fileName || "";
     }
 
-    const subDoc = await db.collection("platform_settings").doc("subjects").get();
+    const subDoc = await db.collection("platform_settings").doc("subjects_v5").get();
     if (subDoc.exists && subDoc.data().files) {
       stateData.subjectFiles = subDoc.data().files;
     }
