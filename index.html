@@ -20,9 +20,9 @@
         </div>
       </div>
       <nav class="main-nav" id="mainNav">
-        <button class="nav-btn active" data-section="scheduleSection">الجدول والمحاضرات</button>
+        <button class="nav-btn active" data-section="scheduleSection">جدول المحاضرات</button>
         <button class="nav-btn" data-section="subjectsSection">المواد الدراسية</button>
-        <button class="nav-btn" data-section="studentsSection">قائمة الطلاب</button>
+        <button class="nav-btn" data-section="cvSection">إرسال الـ CV</button>
         <button class="nav-btn" data-section="supportSection">الدعم الفني</button>
         <button class="nav-btn admin-nav-btn" data-section="adminSection">لوحة الأدمن</button>
       </nav>
@@ -30,113 +30,112 @@
   </header>
 
   <main class="container main-content">
-    <!-- قسم الجدول والمحاضرات -->
+    <!-- 1. قسم جدول المحاضرات -->
     <section id="scheduleSection" class="page-section active">
       <div class="section-header">
-        <h2>الجدول الدراسي والإعلانات</h2>
-        <span class="badge">العام الدراسي 2026 / 2027</span>
+        <h2>جدول المحاضرات</h2>
+        <span class="badge">الفرقة الثانية — شبكات كهربائية</span>
       </div>
 
       <div id="announcementsList" class="announcements-box"></div>
 
-      <div class="card table-card">
-        <h3>جدول المحاضرات الأسبوعي</h3>
-        <div class="table-responsive">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>اليوم</th>
-                <th>الفترة الأولى</th>
-                <th>الفترة الثانية</th>
-                <th>الفترة الثالثة</th>
-              </tr>
-            </thead>
-            <tbody id="scheduleTableBody">
-              <tr>
-                <td>السبت</td>
-                <td>شبكات النقل والتوزيع (مدرج 1)</td>
-                <td>وقاية نظم القوى (معمل الشبكات)</td>
-                <td>تطبيقات الحاسب في الشبكات</td>
-              </tr>
-              <tr>
-                <td>الأحد</td>
-                <td>محطات القوى الكهربائية (مدرج 2)</td>
-                <td>قياسات واختبارات كهربائية</td>
-                <td>تدريب عملي - ورشة الشبكات</td>
-              </tr>
-              <tr>
-                <td>الإثنين</td>
-                <td>آلات كهربائية متقدمة</td>
-                <td>إلكترونيات القوى</td>
-                <td>مشروع التخرج التطبيقي</td>
-              </tr>
-              <tr>
-                <td>الثلاثاء</td>
-                <td>تخطيط وتصميم الشبكات</td>
-                <td>صيانة وتشغيل الخطوط الهوائية</td>
-                <td>معمل الوقاية والتحكم</td>
-              </tr>
-              <tr>
-                <td>الأربعاء</td>
-                <td>اقتصاديات القوى الكهربائية</td>
-                <td>أمن وسلامة مهنية</td>
-                <td>مراجعة وتطبيقات عامة</td>
-              </tr>
-            </tbody>
-          </table>
+      <div class="card">
+        <h3>صورة جدول المحاضرات</h3>
+        <div id="scheduleImageViewer" class="schedule-viewer">
+          <p class="muted-text">لم يتم رفع صورة جدول المحاضرات بعد. يمكن للأدمن إضافة صورة الجدول من خانة الإضافة بالأسفل.</p>
+        </div>
+
+        <div id="adminScheduleUploadBox" class="admin-only-box" style="display: none;">
+          <h4>إضافة / تحديث صورة جدول المحاضرات (للأدمن فقط)</h4>
+          <div class="upload-row">
+            <input type="file" id="scheduleImageFileInput" accept="image/*" hidden />
+            <button type="button" id="addScheduleImageBtn" class="btn btn-primary">إضافة صورة الجدول</button>
+            <span id="scheduleFileNameLabel" class="file-status-text">لم يتم اختيار صورة</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- قسم المواد الدراسية -->
+    <!-- 2. قسم المواد الدراسية -->
     <section id="subjectsSection" class="page-section">
       <div class="section-header">
-        <h2>المواد الدراسية والمراجع</h2>
+        <h2>المواد الدراسية والامتحانات</h2>
         <span class="badge">7 مواد أساسية</span>
       </div>
       <div class="cards-grid" id="subjectsGrid"></div>
     </section>
 
-    <!-- قسم قائمة الطلاب -->
-    <section id="studentsSection" class="page-section">
+    <!-- 3. قسم تسجيل الدخول والتحقق وإرسال الـ CV -->
+    <section id="cvSection" class="page-section">
       <div class="section-header">
-        <h2>قائمة طلاب الفرقة الثانية — شبكات كهربائية</h2>
-        <div class="search-box">
-          <input type="text" id="studentSearchInput" placeholder="ابحث بالاسم أو رقم الجلوس..." />
-        </div>
+        <h2>تسجيل الدخول وإرسال الـ CV</h2>
+        <span class="badge">تحقق الجيميل والواتساب</span>
       </div>
 
-      <div class="card">
-        <form id="studentRegisterForm" class="inline-form">
-          <input type="text" id="newStudentName" placeholder="اسم الطالب رباعي" required />
-          <input type="text" id="newStudentCode" placeholder="رقم الجلوس / الكود" required />
-          <input type="text" id="newStudentGroup" placeholder="المجموعة / السكشن (مثال: سكشن 1)" required />
-          <button type="submit" class="btn btn-primary">تسجيل بيانات الطالب</button>
+      <div id="studentAuthCard" class="card form-card">
+        <h3>تسجيل دخول الطالب والتحقق من البيانات</h3>
+        <form id="studentVerifyForm">
+          <div class="form-group">
+            <label for="studentFullName">اسم الطالب (من كشف الفرقة الثانية)</label>
+            <input type="text" id="studentFullName" list="rosterNamesList" placeholder="اكتب اسمك أو اختره من الكشف" required />
+            <datalist id="rosterNamesList"></datalist>
+          </div>
+          <div class="form-group">
+            <label for="studentGmail">البريد الإلكتروني (Gmail)</label>
+            <input type="email" id="studentGmail" placeholder="example@gmail.com" required />
+          </div>
+          <div class="form-group">
+            <label for="studentWhatsapp">رقم الواتساب (مع كود الدولة مثل +20)</label>
+            <input type="tel" id="studentWhatsapp" placeholder="+2010xxxxxxxx" required />
+          </div>
+          <div class="form-group verification-box">
+            <label for="verifyCodeInput">رمز التحقق (تم إرساله/توليده للتحقق من الجيميل والواتساب)</label>
+            <div class="verify-row">
+              <button type="button" id="sendVerifyCodeBtn" class="btn btn-secondary">إرسال / توليد رمز التحقق</button>
+              <input type="text" id="verifyCodeInput" placeholder="أدخل رمز التحقق المكون من 6 أرقام" maxlength="6" required />
+            </div>
+            <p id="verifyHintText" class="hint-text"></p>
+          </div>
+          <button type="submit" class="btn btn-primary full-width">تأكيد الدخول والانتقال لكتابة الـ CV</button>
         </form>
       </div>
 
-      <div class="card table-card">
-        <div class="table-responsive">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>اسم الطالب</th>
-                <th>رقم الجلوس / الكود</th>
-                <th>السكشن</th>
-              </tr>
-            </thead>
-            <tbody id="studentsTableBody"></tbody>
-          </table>
+      <div id="cvFormCard" class="card form-card" style="display: none;">
+        <div class="verified-banner">
+          <div>
+            <strong>تم التحقق من الطالب بنجاح</strong>
+            <p id="verifiedStudentSummary" class="muted-text"></p>
+          </div>
+          <button type="button" id="studentLogoutBtn" class="btn btn-outline">تغيير بيانات الطالب</button>
         </div>
+
+        <form id="cvSubmissionForm">
+          <div class="form-group">
+            <label for="cvSummary">نبذة تعريفية / الهدف المهني</label>
+            <textarea id="cvSummary" rows="3" placeholder="اكتب نبذة مختصرة عنك..." required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="cvSkills">المهارات الفنية والشبكات الكهربائية</label>
+            <textarea id="cvSkills" rows="3" placeholder="مثال: قراءة المخططات، أعمال الصيانة والوقاية، العمل الجماعي..." required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="cvExperience">التدريب العملي والخبرات والدورات</label>
+            <textarea id="cvExperience" rows="3" placeholder="اكتب التدريبات العملية أو المشاريع أو الدورات..." required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="cvEducation">المؤهل الدراسي</label>
+            <input type="text" id="cvEducation" value="المعهد الفني الصناعي بقويسنا — الفرقة الثانية شعبة شبكات كهربائية" required />
+          </div>
+          <button type="submit" class="btn btn-primary full-width">إرسال الـ CV (نسخة للطالب ونسخة للأدمن)</button>
+        </form>
       </div>
     </section>
 
-    <!-- قسم الدعم الفني -->
+    <!-- 4. قسم الدعم الفني -->
     <section id="supportSection" class="page-section">
       <div class="section-header">
         <h2>الدعم الفني واستفسارات الطلاب</h2>
-        <span class="badge">تواصل مباشر مع إدارة المنصة</span>
+        <span class="badge">تواصل مباشر مع الأدمن</span>
       </div>
 
       <div class="card form-card">
@@ -146,11 +145,11 @@
             <input type="text" id="supportName" placeholder="اكتب اسمك الكامل" required />
           </div>
           <div class="form-group">
-            <label for="supportPhone">رقم الهاتف أو البريد (اختياري)</label>
-            <input type="text" id="supportPhone" placeholder="للتواصل والرد على استفسارك" />
+            <label for="supportContact">الجيميل أو رقم الواتساب</label>
+            <input type="text" id="supportContact" placeholder="example@gmail.com أو رقم الواتساب" required />
           </div>
           <div class="form-group">
-            <label for="supportMessage">تفاصيل المشكلة أو الاستفسار</label>
+            <label for="supportMessage">تفاصيل الاستفسار أو المشكلة</label>
             <textarea id="supportMessage" rows="4" placeholder="اكتب رسالتك هنا..." required></textarea>
           </div>
           <button type="submit" class="btn btn-primary">إرسال الرسالة</button>
@@ -158,14 +157,13 @@
       </div>
     </section>
 
-    <!-- قسم لوحة الأدمن -->
+    <!-- 5. قسم لوحة الأدمن (التحكم الكامل والاطلاع الحصري على الكشف الكامل للطلاب والـ CV والرسائل) -->
     <section id="adminSection" class="page-section">
       <div class="section-header">
         <h2>لوحة تحكم الأدمن</h2>
         <span class="badge badge-warning">مخصصة لمسؤول المنصة فقط</span>
       </div>
 
-      <!-- نموذج تسجيل دخول الأدمن -->
       <div id="adminLoginBox" class="card login-card">
         <h3>تسجيل دخول مسؤول المنصة</h3>
         <p class="muted-text">الدخول متاح فقط لحساب الأدمن المعتمد عبر البريد الإلكتروني وكلمة المرور.</p>
@@ -182,7 +180,6 @@
         </form>
       </div>
 
-      <!-- محتوى لوحة التحكم بعد التحقق -->
       <div id="adminPanel" class="admin-dashboard" style="display: none;">
         <div class="admin-topbar card">
           <div>
@@ -202,24 +199,31 @@
         </div>
 
         <div class="card">
-          <h3>إدارة الطلاب المسجلين</h3>
-          <div class="table-responsive">
+          <div class="roster-header">
+            <h3>كشف أسماء طلاب الفرقة الثانية — شبكات كهربائية (286 طالباً)</h3>
+            <input type="text" id="adminRosterSearch" placeholder="ابحث بالاسم أو المسلسل أو الرقم الأصلي..." />
+          </div>
+          <div class="table-responsive roster-scroll">
             <table class="data-table">
               <thead>
                 <tr>
-                  <th>الاسم</th>
-                  <th>الكود</th>
-                  <th>السكشن</th>
-                  <th>إجراء</th>
+                  <th>م</th>
+                  <th>الاسم رباعياً</th>
+                  <th>الرقم الأصلي</th>
                 </tr>
               </thead>
-              <tbody id="adminStudentsTableBody"></tbody>
+              <tbody id="adminRosterTableBody"></tbody>
             </table>
           </div>
         </div>
 
         <div class="card">
-          <h3>رسائل الدعم الفني الواردة</h3>
+          <h3>سجلات الطلاب والـ CV الواردة (للأدمن فقط)</h3>
+          <div id="adminCvRecordsList" class="records-list"></div>
+        </div>
+
+        <div class="card">
+          <h3>رسائل الدعم الفني الواردة (للأدمن فقط)</h3>
           <div id="adminSupportList" class="support-messages-list"></div>
         </div>
       </div>
